@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="az">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Qaraca Teatrı - Əlaqə</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header class="navbar">
+      <div class="logo">Qaraca</div>
+      <nav class="nav-links">
+        <a href="index.html">Ana Səhifə</a>
+        <a href="repertoire.html">Tamaşalar</a>
+        <a href="about.html">Haqqımızda</a>
+        <a href="contact.html" class="active">Əlaqə</a>
+      </nav>
+      <button class="cta-btn">Bilet Al</button>
+      <div class="menu-toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </header>
+
+    <div
+      class="page-hero"
+      style="
+        background-image:
+          linear-gradient(rgba(13, 13, 13, 0.8), rgba(13, 13, 13, 0.9)),
+          url(&quot;https://images.unsplash.com/photo-1498837167922-41c09570139f?auto=format&fit=crop&w=1920&q=80&quot;);
+      "
+    >
+      <h1>Bizimlə Əlaqə</h1>
+      <p>Biletlər, qastrollar və əməkdaşlıq üçün</p>
+    </div>
+
+    <section class="section-padding">
+      <div class="contact-container">
+        <div class="contact-info-blocks">
+          <div class="info-block">
+            <h3 style="color: var(--primary-orange); margin-bottom: 10px">
+              Ünvan
+            </h3>
+            <p>Bakı şəhəri, Sənət küçəsi 1, AZ1000</p>
+          </div>
+          <div class="info-block">
+            <h3 style="color: var(--primary-orange); margin-bottom: 10px">
+              Telefon
+            </h3>
+            <p>+994 50 123 45 67</p>
+            <p>+994 12 987 65 43</p>
+          </div>
+          <div class="info-block">
+            <h3 style="color: var(--primary-orange); margin-bottom: 10px">
+              E-poçt
+            </h3>
+            <p>salam@qaraca.az</p>
+            <p>bilet@qaraca.az</p>
+          </div>
+        </div>
+
+        <div class="contact-form-wrapper">
+          <h3
+            style="
+              margin-bottom: 1.5rem;
+              color: var(--primary-red);
+              font-family: var(--font-heading);
+            "
+          >
+            Mesaj Göndər
+          </h3>
+          <form class="contact-form">
+            <div class="form-group">
+              <input type="text" placeholder="Adınız və Soyadınız" required />
+            </div>
+            <div class="form-group">
+              <input type="email" placeholder="E-poçt ünvanınız" required />
+            </div>
+            <div class="form-group">
+              <textarea rows="5" placeholder="Mesajınız..." required></textarea>
+            </div>
+            <button
+              type="submit"
+              class="cta-btn"
+              style="width: 100%; border-radius: 5px"
+            >
+              Göndər
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAP SECTION -->
+    <section class="section-padding dark-bg text-center">
+      <h2 class="section-title">Bizi Necə Tapmalı?</h2>
+      <p style="margin-bottom: 2rem; color: #ccc">
+        Teatrımıza gələn yollar sənətə açılır. İçərişəhər metrosundan cəmi 5
+        dəqiqəlik məsafədə. Xəritə vasitəsilə rahatlıqla ünvanı tapa bilərsiniz.
+      </p>
+      <div
+        class="map-container"
+        style="
+          max-width: 1000px;
+          margin: 0 auto;
+          height: 400px;
+          border-radius: 15px;
+          overflow: hidden;
+          border: 3px solid var(--primary-red);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+        "
+      >
+        <!-- Embedding Google Maps centered in Baku as a representative map -->
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d194473.42998314115!2d49.71487508492211!3d40.39457127715694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d6bd6211cf9%3A0x343f6b5e7ae56c6b!2sBaku%2C%20Azerbaijan!5e0!3m2!1sen!2s!4v1714032049618!5m2!1sen!2s"
+          width="100%"
+          height="100%"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="section-padding">
+      <h2 class="section-title">Tez-Tez Verilən Suallar</h2>
+      <div
+        style="
+          max-width: 800px;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+        "
+      >
+        <div
+          style="
+            background: var(--dark-alt);
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary-orange);
+            border-radius: 5px;
+          "
+        >
+          <h4
+            style="
+              color: #fff;
+              margin-bottom: 10px;
+              font-family: var(--font-heading);
+              font-size: 1.2rem;
+            "
+          >
+            Biletləri qapıdan almaq mümkündür?
+          </h4>
+          <p style="color: #ccc; font-size: 1rem">
+            Bəli, tamaşa başlamazdan 1 saat əvvələ qədər kassamız fəaliyyət
+            göstərir. Ancaq onlayn almağınız tövsiyə olunur.
+          </p>
+        </div>
+        <div
+          style="
+            background: var(--dark-alt);
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary-orange);
+            border-radius: 5px;
+          "
+        >
+          <h4
+            style="
+              color: #fff;
+              margin-bottom: 10px;
+              font-family: var(--font-heading);
+              font-size: 1.2rem;
+            "
+          >
+            Əlil arabası yeri mövcuddur?
+          </h4>
+          <p style="color: #ccc; font-size: 1rem">
+            Bəli, salonumuz təmamilə əlçatandır və əlil arabası üçün xüsusi ön
+            sıralarda yerlər ayrılmışdır.
+          </p>
+        </div>
+        <div
+          style="
+            background: var(--dark-alt);
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary-orange);
+            border-radius: 5px;
+          "
+        >
+          <h4
+            style="
+              color: #fff;
+              margin-bottom: 10px;
+              font-family: var(--font-heading);
+              font-size: 1.2rem;
+            "
+          >
+            Ödənişin geri qaytarılması mümkündür?
+          </h4>
+          <p style="color: #ccc; font-size: 1rem">
+            Alınmış biletlər tamaşaya 24 saat qalmışa qədər geri qaytarıla
+            bilər.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <h2 class="logo">Qaraca</h2>
+        <p>Sənətin qəlbi burada döyünür.</p>
+      </div>
+      <div class="copyright">
+        &copy; 2026 Qaraca Teatrı. Bütün hüquqlar qorunur.
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

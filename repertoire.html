@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="az">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Qaraca Teatrı - Tamaşalar</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header class="navbar">
+      <div class="logo">Qaraca</div>
+      <nav class="nav-links">
+        <a href="index.html">Ana Səhifə</a>
+        <a href="repertoire.html" class="active">Tamaşalar</a>
+        <a href="about.html">Haqqımızda</a>
+        <a href="contact.html">Əlaqə</a>
+      </nav>
+      <button class="cta-btn">Bilet Al</button>
+      <div class="menu-toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </header>
+
+    <div
+      class="page-hero"
+      style="
+        background-image:
+          linear-gradient(rgba(13, 13, 13, 0.8), rgba(13, 13, 13, 0.9)),
+          url(&quot;images/tufan_1776926025722.png&quot;);
+      "
+    >
+      <h1>Repertuar</h1>
+      <p>Bütün tamaşalarımız bir yerdə</p>
+    </div>
+
+    <!-- Əsas Tamaşalar -->
+    <section class="section-padding">
+      <h2 class="section-title">Əsas Səhnə</h2>
+      <div class="play-grid" style="max-width: 1200px; margin: 0 auto">
+        <div class="play-card">
+          <div
+            class="card-image"
+            style="
+              background:
+                linear-gradient(135deg, rgba(229, 9, 20, 0.8), transparent),
+                url(&quot;images/qirmizi_xett_1776925687733.png&quot;)
+                  center/cover;
+            "
+          ></div>
+          <div class="card-content">
+            <h3>Qırmızı Xətt</h3>
+            <p>Dram | 120 dəq</p>
+            <button class="outline-btn">Bilet Al - 15 AZN</button>
+          </div>
+        </div>
+        <div class="play-card">
+          <div
+            class="card-image"
+            style="
+              background:
+                linear-gradient(135deg, rgba(255, 159, 28, 0.8), transparent),
+                url(&quot;images/son_zeng_1776925937523.png&quot;) center/cover;
+            "
+          ></div>
+          <div class="card-content">
+            <h3>Son Zəng</h3>
+            <p>Faciə | 90 dəq</p>
+            <button class="outline-btn">Bilet Al - 12 AZN</button>
+          </div>
+        </div>
+        <div class="play-card">
+          <div
+            class="card-image"
+            style="
+              background:
+                linear-gradient(135deg, rgba(20, 20, 20, 0.8), transparent),
+                url(&quot;images/kohne_saat_1776925949780.png&quot;)
+                  center/cover;
+            "
+          ></div>
+          <div class="card-content">
+            <h3>Köhnə Saat</h3>
+            <p>Komediya | 100 dəq</p>
+            <button class="outline-btn">Bilet Al - 10 AZN</button>
+          </div>
+        </div>
+        <div class="play-card">
+          <div
+            class="card-image"
+            style="
+              background:
+                linear-gradient(135deg, rgba(217, 4, 41, 0.8), transparent),
+                url(&quot;images/tufan_1776926025722.png&quot;) center/cover;
+            "
+          ></div>
+          <div class="card-content">
+            <h3>Tufan</h3>
+            <p>Triller | 110 dəq</p>
+            <button class="outline-btn">Bilet Al - 20 AZN</button>
+          </div>
+        </div>
+        <div class="play-card">
+          <div
+            class="card-image"
+            style="
+              background:
+                linear-gradient(135deg, rgba(13, 13, 13, 0.8), transparent),
+                url(&quot;images/sehne_arxasi_1776926159386.png&quot;)
+                  center/cover;
+            "
+          ></div>
+          <div class="card-content">
+            <h3>Zəncir</h3>
+            <p>Psixoloji Dram | 95 dəq</p>
+            <button class="outline-btn">Bilet Al - 15 AZN</button>
+          </div>
+        </div>
+        <div class="play-card">
+          <div
+            class="card-image"
+            style="
+              background:
+                linear-gradient(135deg, rgba(229, 9, 20, 0.8), transparent),
+                url(&quot;images/badii_rehber_1776926074916.png&quot;)
+                  center/cover;
+            "
+          ></div>
+          <div class="card-content">
+            <h3>Kölgələr</h3>
+            <p>Sürreal | 80 dəq</p>
+            <button class="outline-btn">Bilet Al - 12 AZN</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Uşaqlar üçün -->
+    <section class="section-padding dark-bg text-center">
+      <h2 class="section-title">Uşaqlar və Yeniyetmələr Üçün</h2>
+      <p
+        style="
+          color: #ccc;
+          margin-bottom: 3rem;
+          max-width: 600px;
+          margin-left: auto;
+          margin-right: auto;
+        "
+      >
+        Gələcək nəsilləri sənətlə böyütmək üçün hər bazar günü səhər
+        seanslarında balacaları gözləyirik.
+      </p>
+      <div
+        class="play-grid"
+        style="
+          max-width: 800px;
+          margin: 0 auto;
+          justify-content: center;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 2rem;
+        "
+      >
+        <div class="play-card" style="width: 350px">
+          <div
+            class="card-image"
+            style="
+              background:
+                linear-gradient(135deg, rgba(255, 159, 28, 0.7), transparent),
+                url(&quot;images/kohne_saat_1776925949780.png&quot;)
+                  center/cover;
+            "
+          ></div>
+          <div class="card-content">
+            <h3>Sehrli Oyuncaqlar</h3>
+            <p>Nağıl | 60 dəq | 5+</p>
+            <button class="outline-btn">Bilet Al - 8 AZN</button>
+          </div>
+        </div>
+        <div class="play-card" style="width: 350px">
+          <div
+            class="card-image"
+            style="
+              background:
+                linear-gradient(135deg, rgba(20, 20, 20, 0.7), transparent),
+                url(&quot;images/qirmizi_xett_1776925687733.png&quot;)
+                  center/cover;
+            "
+          ></div>
+          <div class="card-content">
+            <h3>Kiçik Şahzadə (Yeni Uyarlama)</h3>
+            <p>Fəlsəfi Nağıl | 75 dəq | 10+</p>
+            <button class="outline-btn">Bilet Al - 10 AZN</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- YENİ MÖVSÜM -->
+    <section class="section-padding">
+      <div
+        style="
+          max-width: 1000px;
+          margin: 0 auto;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 3rem;
+          align-items: center;
+        "
+      >
+        <div style="flex: 1; min-width: 300px">
+          <img
+            src="images/sehne_arxasi_1776926159386.png"
+            alt="Səhnə Görüntüsü"
+            style="
+              width: 100%;
+              border-radius: 10px;
+              border: 3px solid var(--primary-red);
+            "
+          />
+        </div>
+        <div style="flex: 1; min-width: 300px">
+          <h2
+            class="section-title"
+            style="text-align: left; margin-bottom: 1.5rem"
+          >
+            Yeniliklər: İkinci Mövsüm
+          </h2>
+          <p style="color: #ccc; margin-bottom: 1rem; font-size: 1.1rem">
+            Qarşıdan gələn payız mövsümündə teatrımız daha 3 fərqli fəlsəfi dram
+            təqdim etməyə hazırlaşır. Eyni zamanda "Gənc Baxış" layihəsi
+            çərçivəsində tələbələr tərəfindən hazırlanan eksperimental tamaşalar
+            da nümayiş olunacaq.
+          </p>
+          <p style="color: #ccc; font-size: 1.1rem; margin-bottom: 2rem">
+            Daha çox gülüş, daha dərin düşüncələr gətirəcək bu mövsümü bizimlə
+            birlikdə yaşayın.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <h2 class="logo">Qaraca</h2>
+        <p>Sənətin qəlbi burada döyünür.</p>
+      </div>
+      <div class="copyright">
+        &copy; 2026 Qaraca Teatrı. Bütün hüquqlar qorunur.
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
