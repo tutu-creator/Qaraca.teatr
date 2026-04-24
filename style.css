@@ -114,8 +114,7 @@ body {
   text-align: center;
   background:
     linear-gradient(to bottom, rgba(13, 13, 13, 0.3) 0%, var(--bg-color) 100%),
-    url("https://images.unsplash.com/photo-1517598858362-e91d84dc2fc2?auto=format&fit=crop&w=1920&q=80")
-      center/cover;
+    url("https://images.unsplash.com/photo-1517598858362-e91d84dc2fc2?auto=format&fit=crop&w=1920&q=80") center/cover;
   position: relative;
   padding: 0 20px;
 }
@@ -127,11 +126,9 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(
-    circle,
-    rgba(217, 4, 41, 0.2) 0%,
-    rgba(13, 13, 13, 0.8) 100%
-  );
+  background: radial-gradient(circle,
+      rgba(217, 4, 41, 0.2) 0%,
+      rgba(13, 13, 13, 0.8) 100%);
   z-index: 1;
 }
 
@@ -344,11 +341,92 @@ body {
   border-color: var(--primary-orange);
 }
 
-/* Testimonials */
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+/* Testimonials Slider */
+.slider-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 0 40px;
+}
+
+.slider-wrapper {
+  overflow: hidden;
+  width: 100%;
+  padding: 10px 5px 25px 5px;
+  /* for box-shadow */
+}
+
+.testimonials-slider-track {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+  gap: 20px;
+}
+
+.testimonials-slider-track .review-card {
+  flex: 0 0 calc(100% - 20px);
+}
+
+@media (min-width: 768px) {
+  .testimonials-slider-track .review-card {
+    flex: 0 0 calc(50% - 20px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .testimonials-slider-track .review-card {
+    flex: 0 0 calc(33.333% - 20px);
+  }
+}
+
+.slider-btn {
+  background: rgba(217, 4, 41, 0.8);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  transition: background 0.3s, transform 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider-btn:hover {
+  background: var(--primary-orange);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+  left: 0;
+}
+
+.next-btn {
+  right: 0;
+}
+
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.slider-dots .dot {
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.slider-dots .dot.active {
+  background: var(--primary-orange);
 }
 
 .review-card {
@@ -584,7 +662,7 @@ body {
   margin-bottom: 2rem;
   gap: 2rem;
 
-  p{
+  p {
     color: var(--primary-orange);
   }
 }
@@ -609,6 +687,7 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
+
   .contact-container,
   .two-col-layout {
     grid-template-columns: 1fr;
