@@ -1,0 +1,793 @@
+<!doctype html>
+<html lang="az">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Qaraca Teatrı - Tamaşalar</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header class="navbar">
+      <a href="index.html" class="logo" style="text-decoration: none">Qaraca</a>
+      <nav class="nav-links">
+        <a href="index.html">Ana Səhifə</a>
+        <a href="repertoire.html" class="active">Tamaşalar</a>
+        <a href="about.html">Haqqımızda</a>
+        <a href="contact.html">Əlaqə</a>
+      </nav>
+      <button class="cta-btn" onclick="openNavPopup()">Bilet Al</button>
+      <div class="menu-toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </header>
+
+    <!-- NAVBAR POPUP -->
+    <div
+      id="nav-popup-overlay"
+      style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        z-index: 9999;
+        align-items: flex-start;
+        justify-content: center;
+        overflow-y: auto;
+      "
+    >
+      <div
+        style="
+          background: #1a1a1a;
+          border-radius: 12px;
+          border-top: 3px solid #d90429;
+          padding: 2rem;
+          max-width: 600px;
+          width: 90%;
+          margin: 2rem auto;
+          position: relative;
+        "
+      >
+        <h2
+          style="
+            font-family: &quot;Playfair Display&quot;, serif;
+            color: #ff9f1c;
+            margin-bottom: 0.3rem;
+          "
+        >
+          Bilet Al
+        </h2>
+        <p style="color: #ccc; margin-bottom: 1.5rem; font-size: 0.95rem">
+          Əvvəlcə tamaşanı seçin
+        </p>
+        <div style="margin-bottom: 1.5rem">
+          <label
+            style="
+              display: block;
+              color: #aaa;
+              font-size: 0.85rem;
+              text-transform: uppercase;
+              margin-bottom: 8px;
+            "
+            >Tamaşa</label
+          >
+          <select
+            id="nav-tamasa-select"
+            onchange="onNavTamasaSelect()"
+            style="
+              width: 100%;
+              padding: 10px 14px;
+              background: #111;
+              border: 1px solid #333;
+              border-radius: 5px;
+              color: #fff;
+              font-size: 14px;
+              outline: none;
+            "
+          >
+            <option value="">-- Tamaşa seçin --</option>
+            <option value="Qırmızı Xətt|15 AZN">Qırmızı Xətt — 15 AZN</option>
+            <option value="Son Zəng|12 AZN">Son Zəng — 12 AZN</option>
+            <option value="Köhnə Saat|10 AZN">Köhnə Saat — 10 AZN</option>
+            <option value="Tufan|12 AZN">Tufan — 12 AZN</option>
+            <option value="Zəncir|10 AZN">Zəncir — 10 AZN</option>
+            <option value="Kölgələr|8 AZN">Kölgələr — 8 AZN</option>
+            <option value="Sehrli Oyuncaqlar|8 AZN">
+              Sehrli Oyuncaqlar — 8 AZN
+            </option>
+            <option value="Kiçik Şahzadə|10 AZN">Kiçik Şahzadə — 10 AZN</option>
+            <option value="Qaraca qız|15 AZN">Qaraca qız — 15 AZN</option>
+          </select>
+        </div>
+        <div id="nav-tamasa-info" style="display: none; margin-bottom: 1.5rem">
+          <p
+            id="nav-popup-name"
+            style="
+              font-family: &quot;Playfair Display&quot;, serif;
+              color: #ff9f1c;
+              font-size: 1.2rem;
+              margin-bottom: 0.2rem;
+            "
+          ></p>
+          <p id="nav-popup-price" style="color: #ccc; font-size: 0.95rem"></p>
+        </div>
+        <div id="nav-sehne" style="display: none">
+          <div
+            style="
+              background: linear-gradient(45deg, #d90429, #ff9f1c);
+              border-radius: 6px;
+              text-align: center;
+              padding: 0.5rem;
+              color: #fff;
+              font-weight: 600;
+              font-size: 0.85rem;
+              margin-bottom: 1.5rem;
+              letter-spacing: 2px;
+            "
+          >
+            🎭 SƏHNƏ
+          </div>
+          <div id="nav-seat-map" style="margin-bottom: 1rem"></div>
+          <div
+            style="
+              display: flex;
+              gap: 1.5rem;
+              margin-bottom: 1.5rem;
+              font-size: 0.8rem;
+              color: #aaa;
+            "
+          >
+            <span
+              ><span
+                style="
+                  display: inline-block;
+                  width: 14px;
+                  height: 14px;
+                  background: #333;
+                  border-radius: 3px;
+                  margin-right: 4px;
+                  vertical-align: middle;
+                "
+              ></span
+              >Boş</span
+            >
+            <span
+              ><span
+                style="
+                  display: inline-block;
+                  width: 14px;
+                  height: 14px;
+                  background: #27ae60;
+                  border-radius: 3px;
+                  margin-right: 4px;
+                  vertical-align: middle;
+                "
+              ></span
+              >Seçilmiş</span
+            >
+            <span
+              ><span
+                style="
+                  display: inline-block;
+                  width: 14px;
+                  height: 14px;
+                  background: #d90429;
+                  border-radius: 3px;
+                  margin-right: 4px;
+                  vertical-align: middle;
+                "
+              ></span
+              >Dolu</span
+            >
+          </div>
+          <p
+            id="nav-selected-info"
+            style="
+              color: #ff9f1c;
+              font-size: 0.9rem;
+              margin-bottom: 1.5rem;
+              min-height: 20px;
+            "
+          ></p>
+          <div style="margin-bottom: 1rem">
+            <label
+              style="
+                display: block;
+                color: #aaa;
+                font-size: 0.85rem;
+                text-transform: uppercase;
+                margin-bottom: 6px;
+              "
+              >Adınız</label
+            >
+            <input
+              type="text"
+              placeholder="Adınızı daxil edin"
+              style="
+                width: 100%;
+                padding: 10px 14px;
+                background: #111;
+                border: 1px solid #333;
+                border-radius: 5px;
+                color: #fff;
+                font-size: 14px;
+                outline: none;
+              "
+            />
+          </div>
+          <div style="margin-bottom: 1.5rem">
+            <label
+              style="
+                display: block;
+                color: #aaa;
+                font-size: 0.85rem;
+                text-transform: uppercase;
+                margin-bottom: 6px;
+              "
+              >Email</label
+            >
+            <input
+              type="email"
+              placeholder="Email daxil edin"
+              style="
+                width: 100%;
+                padding: 10px 14px;
+                background: #111;
+                border: 1px solid #333;
+                border-radius: 5px;
+                color: #fff;
+                font-size: 14px;
+                outline: none;
+              "
+            />
+          </div>
+        </div>
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+          <button
+            onclick="closeNavPopup()"
+            style="
+              background: transparent;
+              color: #aaa;
+              border: 1px solid #444;
+              padding: 0.6rem 1.5rem;
+              border-radius: 20px;
+              cursor: pointer;
+              font-size: 0.85rem;
+            "
+          >
+            ← Bağla
+          </button>
+          <button
+            onclick="confirmNavTicket()"
+            style="
+              background: linear-gradient(45deg, #d90429, #ff9f1c);
+              color: #fff;
+              border: none;
+              padding: 0.6rem 1.8rem;
+              border-radius: 20px;
+              cursor: pointer;
+              font-size: 0.85rem;
+              font-weight: 600;
+            "
+          >
+            Təsdiqlə
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAMAŞA POPUP -->
+    <div
+      id="popup-overlay"
+      style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        z-index: 9999;
+        align-items: flex-start;
+        justify-content: center;
+        overflow-y: auto;
+      "
+    >
+      <div
+        style="
+          background: #1a1a1a;
+          border-radius: 12px;
+          border-top: 3px solid #d90429;
+          padding: 2rem;
+          max-width: 600px;
+          width: 90%;
+          margin: 2rem auto;
+        "
+      >
+        <h2
+          id="popup-name"
+          style="
+            font-family: &quot;Playfair Display&quot;, serif;
+            color: #ff9f1c;
+            margin-bottom: 0.3rem;
+          "
+        ></h2>
+        <p
+          id="popup-price"
+          style="color: #ccc; margin-bottom: 1.5rem; font-size: 1rem"
+        ></p>
+        <div
+          style="
+            background: linear-gradient(45deg, #d90429, #ff9f1c);
+            border-radius: 6px;
+            text-align: center;
+            padding: 0.5rem;
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+          "
+        >
+          🎭 SƏHNƏ
+        </div>
+        <div id="seat-map" style="margin-bottom: 1rem"></div>
+        <div
+          style="
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.8rem;
+            color: #aaa;
+          "
+        >
+          <span
+            ><span
+              style="
+                display: inline-block;
+                width: 14px;
+                height: 14px;
+                background: #333;
+                border-radius: 3px;
+                margin-right: 4px;
+                vertical-align: middle;
+              "
+            ></span
+            >Boş</span
+          >
+          <span
+            ><span
+              style="
+                display: inline-block;
+                width: 14px;
+                height: 14px;
+                background: #27ae60;
+                border-radius: 3px;
+                margin-right: 4px;
+                vertical-align: middle;
+              "
+            ></span
+            >Seçilmiş</span
+          >
+          <span
+            ><span
+              style="
+                display: inline-block;
+                width: 14px;
+                height: 14px;
+                background: #d90429;
+                border-radius: 3px;
+                margin-right: 4px;
+                vertical-align: middle;
+              "
+            ></span
+            >Dolu</span
+          >
+        </div>
+        <p
+          id="selected-info"
+          style="
+            color: #ff9f1c;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            min-height: 20px;
+          "
+        ></p>
+        <div style="margin-bottom: 1rem">
+          <label
+            style="
+              display: block;
+              color: #aaa;
+              font-size: 0.85rem;
+              text-transform: uppercase;
+              margin-bottom: 6px;
+            "
+            >Adınız</label
+          >
+          <input
+            type="text"
+            placeholder="Adınızı daxil edin"
+            style="
+              width: 100%;
+              padding: 10px 14px;
+              background: #111;
+              border: 1px solid #333;
+              border-radius: 5px;
+              color: #fff;
+              font-size: 14px;
+              outline: none;
+            "
+          />
+        </div>
+        <div style="margin-bottom: 1.5rem">
+          <label
+            style="
+              display: block;
+              color: #aaa;
+              font-size: 0.85rem;
+              text-transform: uppercase;
+              margin-bottom: 6px;
+            "
+            >Email</label
+          >
+          <input
+            type="email"
+            placeholder="Email daxil edin"
+            style="
+              width: 100%;
+              padding: 10px 14px;
+              background: #111;
+              border: 1px solid #333;
+              border-radius: 5px;
+              color: #fff;
+              font-size: 14px;
+              outline: none;
+            "
+          />
+        </div>
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+          <button
+            onclick="closePopup()"
+            style="
+              background: transparent;
+              color: #aaa;
+              border: 1px solid #444;
+              padding: 0.6rem 1.5rem;
+              border-radius: 20px;
+              cursor: pointer;
+              font-size: 0.85rem;
+            "
+          >
+            ← Bağla
+          </button>
+          <button
+            onclick="confirmTicket()"
+            style="
+              background: linear-gradient(45deg, #d90429, #ff9f1c);
+              color: #fff;
+              border: none;
+              padding: 0.6rem 1.8rem;
+              border-radius: 20px;
+              cursor: pointer;
+              font-size: 0.85rem;
+              font-weight: 600;
+            "
+          >
+            Təsdiqlə
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="page-hero"
+      style="
+        background-image:
+          linear-gradient(rgba(13, 13, 13, 0.8), rgba(13, 13, 13, 0.9)),
+          url(&quot;images/tufan_1776926025722.png&quot;);
+      "
+    >
+      <h1>Repertuar</h1>
+      <p>Bütün tamaşalarımız bir yerdə</p>
+    </div>
+
+    <!-- Əsas Tamaşalar -->
+    <section class="section-padding">
+      <h2 class="section-title">Əsas Səhnə</h2>
+      <div class="play-grid" style="max-width: 1200px; margin: 0 auto">
+        <div class="play-card">
+          <div
+            class="card-image"
+            style="
+              background:
+                linear-gradient(135deg, rgba(229, 9, 20, 0.8), transparent),
+                url(&quot;images/qirmizi_xett_1776925687733.png&quot;)
+                  center/cover;
+            "
+          ></div>
+          <div class="card-content">
+            <h3>Qırmızı Xətt</h3>
+            <p>Dram | 120 dəq</p>
+            
+            <button
+              class="outline-btn"
+              onclick="openPopup('Qırmızı Xətt', '15 AZN')"
+            >
+              Bilet Al - 15 AZN
+            </button>
+          </div>
+        </div>
+        <div class="play-card">
+          <div
+            class="card-image"
+            style="
+              background:
+                linear-gradient(135deg, rgba(255, 159, 28, 0.8), transparent),
+                url(&quot;images/son_zeng_1776925937523.png&quot;) center/cover;
+            "
+          ></div>
+          <div class="card-content">
+            <h3>Son Zəng</h3>
+            <p>Faciə | 90 dəq</p>
+            
+            <button
+              class="outline-btn"
+              onclick="openPopup('Son Zəng', '12 AZN')"
+            >
+              Bilet Al - 12 AZN
+            </button>
+          </div>
+        </div>
+        <div class="play-card">
+          <div
+            class="card-image"
+            style="
+              background:
+                linear-gradient(135deg, rgba(20, 20, 20, 0.8), transparent),
+                url(&quot;images/kohne_saat_1776925949780.png&quot;)
+                  center/cover;
+            "
+          ></div>
+          <div class="card-content">
+            <h3>Köhnə Saat</h3>
+            <p>Komediya | 100 dəq</p>
+            
+            <button
+              class="outline-btn"
+              onclick="openPopup('Köhnə Saat', '10 AZN')"
+            >
+              Bilet Al - 10 AZN
+            </button>
+          </div>
+        </div>
+        <div class="play-card">
+          <div
+            class="card-image"
+            style="
+              background:
+                linear-gradient(135deg, rgba(217, 4, 41, 0.8), transparent),
+                url(&quot;images/tufan_1776926025722.png&quot;) center/cover;
+            "
+          ></div>
+          <div class="card-content">
+            <h3>Tufan</h3>
+            <p>Triller | 110 dəq</p>
+            
+            <button class="outline-btn" onclick="openPopup('Tufan', '20 AZN')">
+              Bilet Al - 20 AZN
+            </button>
+          </div>
+        </div>
+        <div class="play-card">
+          <div
+            class="card-image"
+            style="
+              background:
+                linear-gradient(135deg, rgba(13, 13, 13, 0.8), transparent),
+                url(&quot;images/sehne_arxasi_1776926159386.png&quot;)
+                  center/cover;
+            "
+          ></div>
+          <div class="card-content">
+            <h3>Zəncir</h3>
+            <p>Psixoloji Dram | 95 dəq</p>
+            
+            <button class="outline-btn" onclick="openPopup('Zəncir', '15 AZN')">
+              Bilet Al - 15 AZN
+            </button>
+          </div>
+        </div>
+        <div class="play-card">
+          <div
+            class="card-image"
+            style="
+              background:
+                linear-gradient(135deg, rgba(229, 9, 20, 0.8), transparent),
+                url(&quot;images/badii_rehber_1776926074916.png&quot;)
+                  center/cover;
+            "
+          ></div>
+          <div class="card-content">
+            <h3>Kölgələr</h3>
+            <p>Sürreal | 80 dəq</p>
+            
+            <button
+              class="outline-btn"
+              onclick="openPopup('Kölgələr', '12 AZN')"
+            >
+              Bilet Al - 12 AZN
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Uşaqlar üçün -->
+    <section class="section-padding dark-bg text-center">
+      <h2 class="section-title">Uşaqlar və Yeniyetmələr Üçün</h2>
+      <p
+        style="
+          color: #ccc;
+          margin-bottom: 3rem;
+          max-width: 600px;
+          margin-left: auto;
+          margin-right: auto;
+        "
+      >
+        Gələcək nəsilləri sənətlə böyütmək üçün hər bazar günü səhər
+        seanslarında balacaları gözləyirik.
+      </p>
+      <div
+        class="play-grid"
+        style="
+          max-width: 1200px;
+          margin: 0 auto;
+          justify-content: center;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 2rem;
+        "
+      >
+        <div class="play-card" style="width: 350px">
+          <div
+            class="card-image"
+            style="
+              background:
+                linear-gradient(135deg, rgba(255, 159, 28, 0.7), transparent),
+                url(&quot;images/kohne_saat_1776925949780.png&quot;)
+                  center/cover;
+            "
+          ></div>
+          <div class="card-content">
+            <h3>Sehrli Oyuncaqlar</h3>
+            <p>Nağıl | 60 dəq | 5+</p>
+            <button
+              class="outline-btn"
+              onclick="openPopup('Sehrli Oyuncaqlar', '8 AZN')"
+            >
+              Bilet Al - 8 AZN
+            </button>
+          </div>
+        </div>
+        <div class="play-card" style="width: 350px">
+          <div
+            class="card-image"
+            style="
+              background:
+                linear-gradient(135deg, rgba(20, 20, 20, 0.7), transparent),
+                url(&quot;images/qirmizi_xett_1776925687733.png&quot;)
+                  center/cover;
+            "
+          ></div>
+          <div class="card-content">
+            <h3>Kiçik Şahzadə (Yeni Uyarlama)</h3>
+            <p>Fəlsəfi Nağıl | 75 dəq | 10+</p>
+            <button
+              class="outline-btn"
+              onclick="openPopup('Kiçik Şahzadə', '10 AZN')"
+            >
+              Bilet Al - 10 AZN
+            </button>
+          </div>
+        </div>
+        <div class="play-card" style="width: 350px">
+          <div
+            class="card-image"
+            style="
+              background:
+                linear-gradient(135deg, rgba(217, 4, 41, 0.7), transparent),
+                url(&quot;images/son_zeng_1776925937523.png&quot;) center/cover;
+            "
+          ></div>
+          <div class="card-content">
+            <h3>Qaraca Qız</h3>
+            <p>Nağıl | 70 dəq | 7+</p>
+            <button
+              class="outline-btn"
+              onclick="openPopup('Qaraca Qız', '15 AZN')"
+            >
+              Bilet Al - 15 AZN
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- YENİ MÖVSÜM -->
+    <section class="section-padding">
+      <div
+        style="
+          max-width: 1000px;
+          margin: 0 auto;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 3rem;
+          align-items: center;
+        "
+      >
+        <div style="flex: 1; min-width: 300px">
+          <img
+            src="images/sehne_arxasi_1776926159386.png"
+            alt="Səhnə Görüntüsü"
+            style="
+              width: 100%;
+              border-radius: 10px;
+              border: 3px solid var(--primary-red);
+            "
+          />
+        </div>
+        <div style="flex: 1; min-width: 300px">
+          <h2
+            class="section-title"
+            style="text-align: left; margin-bottom: 1.5rem"
+          >
+            Yeniliklər: İkinci Mövsüm
+          </h2>
+          <p style="color: #ccc; margin-bottom: 1rem; font-size: 1.1rem">
+            Qarşıdan gələn payız mövsümündə teatrımız daha 3 fərqli fəlsəfi dram
+            təqdim etməyə hazırlaşır. Eyni zamanda "Gənc Baxış" layihəsi
+            çərçivəsində tələbələr tərəfindən hazırlanan eksperimental tamaşalar
+            da nümayiş olunacaq.
+          </p>
+          <p style="color: #ccc; font-size: 1.1rem; margin-bottom: 2rem">
+            Daha çox gülüş, daha dərin düşüncələr gətirəcək bu mövsümü bizimlə
+            birlikdə yaşayın.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <h2 class="logo">Qaraca</h2>
+        <p>Sənətin qəlbi burada döyünür.</p>
+      </div>
+      <div class="copyright">
+        &copy; 2026 Qaraca Teatrı. Bütün hüquqlar qorunur.
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
